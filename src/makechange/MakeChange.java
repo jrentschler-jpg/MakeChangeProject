@@ -5,58 +5,118 @@ import java.util.Scanner;
 public class MakeChange {
 
 	public static void main(String[] args) {
-		Scanner kb = new Scanner (System.in);
+		Scanner kb = new Scanner(System.in);
+		// customer enters price of item at checkout.
 		System.out.print("Please enter your purchase price item: $ ");
 		double userInputPrice = kb.nextDouble();
+		// the screen will display the customer's total amount for this item.
 		System.out.println("Your Total Amount for this item is: $ " + userInputPrice);
-		
-		System.out.print("You have given: $ " );
+		// this will prompt the user to enter in the amount of money to pay.
+		System.out.print("You have given: $ ");
 		double amountTendered = kb.nextDouble();
-		
+
+		boolean notCorrectAmount = false;
+		boolean exactAmount = false;
+
 		double calculateChangeAmountReturned = amountTendered - userInputPrice;
+
+
 		
 		int dollars = (int) calculateChangeAmountReturned;
+		
+		
+//		This will initialize the bill and coin denominations
 		int twenties = dollars / 20;
 		int dollars1 = dollars % 20;
+		int tens = dollars1 / 10;
+		int dollars2 = dollars % 10;
+		int fives = dollars2 / 5;
+		int dollars3 = dollars % 5;
+		int ones = dollars3;
 		
-		int coins = (int) coins4;
-		int quarters = coins / 25;
-		int coins1 = coins % 25;
-		
-		//quarters, dimes, nickels, pennies
-		
-		
-		System.out.println("You exact change amount is: $ "+dollars+ " Dollars " + "and " + coins + " coins");
-		
-		
-//		int floor = (int) num;
-//		if (num < 0
-//				&& (num % floor != 0.0)) {
-//			floor = floor - 1;
-//		}
-//		for (int i=0; i<=howHigh; i++) {
-//		      System.out.printf("0x%08x | %10d | 0%-12o | 0b%-32s %n", i, i, i, Integer.toBinaryString(i));
-//		
-//		if(amountTendered <= customerPurchasePrice) {
-//			System.out.println(number of bills and coins to go back to customer);
-//		} else {
-//			System.out.println("This is incorrect change.");
-//		}
-//		      
-		 //cashRegisterCalculation;
-		//calculateChangeAmountReturned;
-		//customerPurchasePrice;
-		//amountTendered;
-		//if the amount tendered is more than the cost of item, display 
-		//the number of bills and coins that should be given to the customer.
-		
-		//largest bill and coin denominations 
-		//$20, $10, $5, $1, .25c, .10c, .05c, .01c
-				
-		
-		//too little = result in an error message 'This is incorrect change'
-		
-		
+//		These if(eslseif) else statements will print out the calcalated change amount  
+		if (amountTendered < userInputPrice) {
+			System.out.println("You have not provided the correct amount.");
+			notCorrectAmount = true;
+		} else if (amountTendered == userInputPrice) {
+
+			System.out.println("Thank you for the exact amount!");
+			exactAmount = true;
+		} else {
+
+			if (twenties > 1) {
+				System.out.println(" $: " + twenties + " Twenty Dollar Bills");
+
+			} else {
+				System.out.println(" $: " + twenties + " Twenty Dollar Bill");
+			}
+			if (tens > 1) {
+				System.out.println(" $: " + tens + " Ten Dollar Bills");
+			} else {
+				System.out.println(" $: " + tens + " Ten Dollar Bill");
+			}
+			if (fives > 1) {
+				System.out.println(" $: " + fives + " Five Dollar Bills");
+			} else {
+				System.out.println(" $: " + fives + " Five Dollar Bill");
+			}
+			if (ones > 1) {
+				System.out.println(" $: " + ones + " One Dollar Bills");
+			} else {
+				System.out.println(" $: " + ones + " One Dollar Bill");
+
+			}
+		}
+
+//		quarters, dimes, nickels, pennies
+		double coins = calculateChangeAmountReturned - ((int) calculateChangeAmountReturned);
+		int coinsWhole = (int) ((coins * 100) + .001);
+
+		int quarters = coinsWhole / 25;
+//		int coinsWhole1 = coinsWhole % 25;
+		int dimes = coinsWhole / 10;
+//		int coinsWhole2 = coinsWhole % 10;
+		int nickels = coinsWhole / 5;
+//		int coinsWhole3 = coinsWhole % 5;
+		int pennies = coinsWhole / 1;
+//		int coinsWhole4= coinsWhole % 1;
+
+		if (!notCorrectAmount) {
+		if (!exactAmount) {
+
+			if (quarters > 1) {
+				System.out.println(" $: " + quarters + " Quarters");
+			} else {
+				System.out.println(" $: " + quarters + " Quarter");
+			}
+
+			if (dimes > 1) {
+				System.out.println(" $: " + dimes + " Dimes");
+			} else {
+				System.out.println(" $: " + dimes + " Dime");
+			}
+
+			if (nickels > 1) {
+				System.out.println(" $: " + nickels + " Nickels");
+			} else {
+				System.out.println(" $: " + nickels + " Nickel");
+			}
+
+			if (pennies > 1) {
+				System.out.println(" $: " + pennies + " Pennies");
+
+			} else {
+				System.out.println(" $: " + pennies + " Penny");
+
+			}
+		}
+		}
+
+	
+
+
+		System.out.println("You exact change amount is: $ " + dollars + " Dollars " + "and " + coinsWhole + " cents");
+
 		
 
 		kb.close();
