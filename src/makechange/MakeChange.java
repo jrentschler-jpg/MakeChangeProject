@@ -16,7 +16,13 @@ public class MakeChange {
 		double calculateChangeAmountReturned = amountTendered - userInputPrice;
 		
 		int dollars = (int) calculateChangeAmountReturned;
-		int coins = (int) calculateChangeAmountReturned;
+		int twenties = dollars / 20;
+		int dollars1 = dollars % 20;
+		
+		int coins = (int) coins4;
+		int quarters = coins / 25;
+		int coins1 = coins % 25;
+		
 		//quarters, dimes, nickels, pennies
 		
 		
