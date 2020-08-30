@@ -18,12 +18,11 @@ public class MakeChange {
 		boolean notCorrectAmount = false;
 		boolean exactAmount = false;
 
-		double calculateChangeAmountReturned = amountTendered - userInputPrice;
-
-
-		
+		double calculateChangeAmountReturned = amountTendered - userInputPrice;		
 		int dollars = (int) calculateChangeAmountReturned;
 		
+		double coins = calculateChangeAmountReturned - ((int) calculateChangeAmountReturned);
+		int coinsWhole = (int) ((coins * 100) + .001);
 		
 //		This will initialize the bill and coin denominations
 		int twenties = dollars / 20;
@@ -35,73 +34,76 @@ public class MakeChange {
 		int ones = dollars3;
 		
 //		These if(eslseif) else statements will print out the calcalated change amount  
+//		if else statement to display error message if they  have the exact amount or the incorrect amount
 		if (amountTendered < userInputPrice) {
 			System.out.println("You have not provided the correct amount.");
 			notCorrectAmount = true;
 		} else if (amountTendered == userInputPrice) {
-
 			System.out.println("Thank you for the exact amount!");
 			exactAmount = true;
 		} else {
-
+			System.out.println("You exact change amount is: $ " + dollars + " Dollars " + "and ." + coinsWhole + " cents");
+			
+//
 			if (twenties > 1) {
 				System.out.println(" $: " + twenties + " Twenty Dollar Bills");
 
-			} else {
+			} else if(twenties == 1) {
 				System.out.println(" $: " + twenties + " Twenty Dollar Bill");
 			}
 			if (tens > 1) {
 				System.out.println(" $: " + tens + " Ten Dollar Bills");
-			} else {
+			} else if(tens == 1){
 				System.out.println(" $: " + tens + " Ten Dollar Bill");
 			}
 			if (fives > 1) {
 				System.out.println(" $: " + fives + " Five Dollar Bills");
-			} else {
+			} else if(fives == 1) {
 				System.out.println(" $: " + fives + " Five Dollar Bill");
 			}
 			if (ones > 1) {
 				System.out.println(" $: " + ones + " One Dollar Bills");
-			} else {
+			} else if(ones == 1){
 				System.out.println(" $: " + ones + " One Dollar Bill");
 
 			}
 		}
 //		This will initialize the bill and coin denominations
 //		quarters, dimes, nickels, pennies
-		double coins = calculateChangeAmountReturned - ((int) calculateChangeAmountReturned);
-		int coinsWhole = (int) ((coins * 100) + .001);
 
 		int quarters = coinsWhole / 25;
+		coinsWhole = coinsWhole % 25;
 		int dimes = coinsWhole / 10;
+		coinsWhole = coinsWhole % 10;
 		int nickels = coinsWhole / 5;
+		coinsWhole = coinsWhole % 5;
 		int pennies = coinsWhole / 1;
-//		if else statement to display error message if they  have the exact amount or the incorrect amount
+		
 		if (!notCorrectAmount) {
 		if (!exactAmount) {
 //		display the correct dominations 
 			if (quarters > 1) {
 				System.out.println(" $: " + quarters + " Quarters");
-			} else {
+			} else if(quarters == 1){
 				System.out.println(" $: " + quarters + " Quarter");
 			}
 
 			if (dimes > 1) {
 				System.out.println(" $: " + dimes + " Dimes");
-			} else {
+			} else if(dimes == 1) {
 				System.out.println(" $: " + dimes + " Dime");
 			}
 
 			if (nickels > 1) {
 				System.out.println(" $: " + nickels + " Nickels");
-			} else {
+			} else if(nickels == 1){
 				System.out.println(" $: " + nickels + " Nickel");
 			}
 
 			if (pennies > 1) {
 				System.out.println(" $: " + pennies + " Pennies");
 
-			} else {
+			} else if(pennies == 1){
 				System.out.println(" $: " + pennies + " Penny");
 
 			}
@@ -111,7 +113,6 @@ public class MakeChange {
 	
 
 
-		System.out.println("You exact change amount is: $ " + dollars + " Dollars " + "and " + coinsWhole + " cents");
 
 		
 
