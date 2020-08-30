@@ -67,23 +67,19 @@ public class MakeChange {
 
 			}
 		}
-
+//		This will initialize the bill and coin denominations
 //		quarters, dimes, nickels, pennies
 		double coins = calculateChangeAmountReturned - ((int) calculateChangeAmountReturned);
 		int coinsWhole = (int) ((coins * 100) + .001);
 
 		int quarters = coinsWhole / 25;
-//		int coinsWhole1 = coinsWhole % 25;
 		int dimes = coinsWhole / 10;
-//		int coinsWhole2 = coinsWhole % 10;
 		int nickels = coinsWhole / 5;
-//		int coinsWhole3 = coinsWhole % 5;
 		int pennies = coinsWhole / 1;
-//		int coinsWhole4= coinsWhole % 1;
-
+//		if else statement to display error message if they  have the exact amount or the incorrect amount
 		if (!notCorrectAmount) {
 		if (!exactAmount) {
-
+//		display the correct dominations 
 			if (quarters > 1) {
 				System.out.println(" $: " + quarters + " Quarters");
 			} else {
